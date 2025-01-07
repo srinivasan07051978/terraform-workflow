@@ -6,25 +6,10 @@ on:
             - main
 
 jobs:
-     permissions: 
-        id_token: write
-        runs-on: ubuntu-latest
-
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v2
-
-            - name: Configure AWS credentials
-              uses: aws-actions/configure-aws-credentials@v4
-              with:
-                aws-region: us-east-1
-                role-to-assume: arn:aws:iam::494662239150:role/AWS-OIDC-GithubAction
-                role-session-name: GitHubActions
-
-            - name: Get S3 details
-              run: |
-                 aws s3 ls
     get_s3_details:
+        permissions:
+            id-token: write
+            contents: read
         runs-on: ubuntu-latest
 
         steps:
